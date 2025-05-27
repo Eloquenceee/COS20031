@@ -13,7 +13,7 @@ include 'connect.php';
 </head>
 <body>
 <div class="main-container">
-    <h2>Start Scoring</h2>
+    <h2>Archery Scoring</h2>
 
     <form method="POST" action="submit.php">
         <!-- Dynamic dropdowns populated from database -->
