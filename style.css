@@ -1,0 +1,220 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #3a7ca5 0%, #28536b 100%);
+    min-height: 96vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container, #score-form {
+    max-width: 520px;
+    margin: 48px auto 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .main-container, #score-form {
+        max-width: 98vw;
+        padding: 0 1vw;
+    }
+    form, #score-form {
+        padding: 18px 2vw 16px 2vw;
+    }
+}
+
+h2 {
+    color: #28536b;
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-top: 0;
+    background: #f9fafb;
+    border-radius: 16px 16px 0 0;
+    padding: 24px 0 12px 0;
+    box-shadow: none;
+    width: 100%;
+}
+
+form {
+    background: #f9fafb;
+    padding: 32px 36px 28px 36px;
+    border-radius: 0 0 16px 16px;
+    max-width: 100%;
+    width: 100%;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+label {
+    color: #28536b;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+input, select {
+    padding: 10px 12px;
+    border: 1.5px solid #b3c2cc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f4f8fb;
+    margin-bottom: 0;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: #3a7ca5;
+    outline: none;
+    box-shadow: 0 0 0 2px #3a7ca540;
+}
+
+input[type="submit"], button {
+    background: linear-gradient(90deg, #3a7ca5 60%, #28536b 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 0;
+    margin-top: 10px;
+    box-shadow: 0 2px 8px rgba(40, 83, 107, 0.10);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s, opacity 0.2s;
+}
+
+input[type="submit"]:hover, button:hover {
+    background: linear-gradient(90deg, #28536b 60%, #3a7ca5 100%);
+    box-shadow: 0 4px 16px rgba(40, 83, 107, 0.16);
+    transform: translateY(-2px) scale(1.03);
+}
+
+input[type="submit"]:disabled, button:disabled {
+    background: #e0e0e0;
+    color: #999;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.7;
+}
+
+.num-pad {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(40px, auto);
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 18px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.num-pad button {
+    background: #f9fafb;
+    border: 1.5px solid #b3c2cc;
+    color: #28536b;
+    border-radius: 20px;
+    padding: 8px 2px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+    outline: none;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.num-pad button:hover, .num-pad button:focus {
+    background: #e3eef7;
+    border-color: #3a7ca5;
+    color: #28536b;
+    transform: translateY(-2px) scale(1.05);
+}
+
+.score-header {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #28536b;
+    margin-bottom: 12px;  /* Increased from 8px */
+    margin-top: 0;
+}
+
+.score-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 18px;
+    font-size: 1.1rem;
+}
+
+.display-arrow-box {
+    background: #f4f8fb;
+    border: 2px solid #3a7ca5;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #28536b;
+    min-width: 36px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#score-form {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(40, 83, 107, 0.10);
+    padding: 28px 16px 20px 16px;
+    max-width: 520px;
+    width: 100%;
+    margin: 32px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+#arrow-scores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#score-form .button-row input[type="submit"],
+#score-form .button-row button[type="button"] {
+    flex: 1 1 0;
+    min-width: 140px;
+    max-width: 200px;
+    /* Ensures all buttons grow equally and have the same width */
+}
