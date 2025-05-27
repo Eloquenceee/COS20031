@@ -2,9 +2,10 @@
 session_start();
 include 'connect.php';
 
+// Number of arrows shot per end
 const ARROWS_PER_END = 6;
 
-// Step 1: Validate initial POST and get or create scoreId
+// Initialize or retrieve session data for scoring
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['archerId'], $_POST['roundNo'], $_POST['competitionId'])) {
     $_SESSION['archerId'] = $_POST['archerId'];
     $_SESSION['roundNo'] = $_POST['roundNo'];
@@ -20,7 +21,7 @@ if (!$archerId || !$roundNo || !$competitionId) {
     die("Missing required parameters.");
 }
 
-// Step 2: Get or create Score record
+// Get or create Score record
 $scoreCheck = mysqli_query($conn, "
     SELECT scoreId, totalScore FROM Score 
     WHERE archerId = $archerId AND roundNo = $roundNo AND competitionId = $competitionId
@@ -37,7 +38,7 @@ if ($row = mysqli_fetch_assoc($scoreCheck)) {
     $totalScore = 0;
 }
 
-// Step 3: Load all RoundRanges for this round
+// Load all RoundRanges for this round
 $rangeRes = mysqli_query($conn, "
     SELECT rr.rangeId, rr.endNo, t.distance, t.targetFace
     FROM RoundRange rr
@@ -59,7 +60,7 @@ while ($row = mysqli_fetch_assoc($rangeRes)) {
 }
 $totalEnds = count($endsList);
 
-// Step 4: Determine current progress
+// Determine current progress
 $arrowCountRes = mysqli_query($conn, "
     SELECT COUNT(*) as arrowCount FROM ScoreArrow WHERE scoreId = $scoreId
 ");
@@ -80,9 +81,10 @@ $distance = $currentEnd['distance'];
 $face = $currentEnd['targetFace'];
 $endNo = $currentEnd['endNumber'];
 
-// Step 5: Save submitted scores
+// Process arrow scores if form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['arrow'])) {
     $scores = $_POST['arrow'];
+    // Define valid score values (X=10, M=miss)
     $validScores = ['X', '10','9','8','7','6','5','4','3','2','1','M'];
     $total = 0;
 

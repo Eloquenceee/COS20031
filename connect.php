@@ -1,11 +1,12 @@
 <?php
-$host = "feenix-mariadb.swin.edu.au";      // or 127.0.0.1
-$user = "s103485545";       // your DB username
-$pwd = "chillgroup12";           // your DB password
-$sql_db = "s103485545_db"; // your database name
-$port = 3306;                // your DB port
+// Database connection configuration
+$host = "feenix-mariadb.swin.edu.au";      // Database server hostname
+$user = "s103485545";                       // Database username
+$pwd = "chillgroup12";                      // Database password
+$sql_db = "s103485545_db";                 // Target database name
+$port = 3306;                              // Database server port
 
-// Create connection
+// Establish database connection with error suppression
 $conn = @mysqli_connect(
     $host,
     $user,
@@ -14,7 +15,7 @@ $conn = @mysqli_connect(
     $port
 );
 
-// Check connection
+// Verify connection success
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }

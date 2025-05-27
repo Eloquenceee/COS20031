@@ -1,7 +1,10 @@
 <?php
+// Database connection include
 include 'connect.php';
 
+// Verify required POST parameters exist
 if (isset($_POST['archerId']) && isset($_POST['equipmentId'])) {
+    // Convert and sanitize input parameters
     $archerId = intval($_POST['archerId']);
     $equipmentId = intval($_POST['equipmentId']);
 
@@ -21,22 +24,27 @@ if (isset($_POST['archerId']) && isset($_POST['equipmentId'])) {
     $classRes = mysqli_query($conn, "SELECT classId, className FROM Class");
     $matchedClassId = null;
 
+    // Query for matching class based on age and gender criteria
     while ($row = mysqli_fetch_assoc($classRes)) {
         $className = $row['className'];
         $classId = $row['classId'];
 
+        // Match based on gender first
         if (stripos($className, $gender) !== false) {
-            // Extract numeric age bracket from className
+            // Check for age bracket in class name
             if (preg_match('/(\d+)/', $className, $matches)) {
                 $limit = (int)$matches[1];
 
+                // Handle "Under X" age brackets
                 if (stripos($className, 'Under') !== false && $age < $limit) {
                     $matchedClassId = $classId;
                     break;
+                // Handle "X+" age brackets
                 } elseif (stripos($className, '+') !== false && $age >= $limit) {
                     $matchedClassId = $classId;
                     break;
                 }
+            // Handle "Open" class as fallback
             } elseif (stripos($className, 'Open') !== false) {
                 $matchedClassId = $classId; // fallback
             }

@@ -16,7 +16,8 @@ include 'connect.php';
     <h2>Start Scoring</h2>
 
     <form method="POST" action="submit.php">
-        <!-- Archer Dropdown -->
+        <!-- Dynamic dropdowns populated from database -->
+        <!-- Archer selection -->
         <label for="archerId">Select Archer</label>
         <select name="archerId" id="archerId" required>
             <option value="">-- Select Archer --</option>
@@ -28,7 +29,7 @@ include 'connect.php';
             ?>
         </select>
 
-        <!-- Equipment Dropdown -->
+        <!-- Equipment selection -->
         <label for="equipmentId">Select Equipment</label>
         <select name="equipmentId" id="equipmentId" required>
             <option value="">-- Select Equipment --</option>
@@ -40,7 +41,7 @@ include 'connect.php';
             ?>
         </select>
 
-        <!-- Competition Dropdown -->
+        <!-- Competition selection -->
         <label for="competitionId">Select Competition</label>
         <select name="competitionId" id="competitionId" required>
             <option value="">-- Select Competition --</option>
@@ -52,7 +53,7 @@ include 'connect.php';
             ?>
         </select>
 
-        <!-- Round Dropdown -->
+        <!-- Round selection (populated via AJAX) -->
         <label for="roundSelect">Select Round</label>
         <select name="roundNo" id="roundSelect" required>
             <option value="">-- Select Round --</option>
@@ -64,6 +65,7 @@ include 'connect.php';
 </div>
 
 <script>
+    // AJAX function to fetch available rounds based on archer and equipment
     function fetchRounds() {
         const archerId = $('#archerId').val();
         const equipmentId = $('#equipmentId').val();
@@ -88,7 +90,9 @@ include 'connect.php';
         }
     }
 
+    // Initialize event handlers when document loads
     $(document).ready(function () {
+        // Trigger round fetch when archer or equipment changes
         $('#archerId, #equipmentId').on('change', fetchRounds);
     });
 </script>
