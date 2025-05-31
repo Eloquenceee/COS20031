@@ -13,6 +13,17 @@ include 'connect.php';
 </head>
 <body>
 <div class="main-container">
+    <?php 
+    if (isset($_SESSION['score_message'])) {
+        echo '<div id="score-popup" class="popup">';
+        echo '<div class="popup-content">';
+        echo '<p>' . htmlspecialchars($_SESSION['score_message']) . '</p>';
+        echo '<button onclick="closePopup()">Close</button>';
+        echo '</div>';
+        echo '</div>';
+        unset($_SESSION['score_message']);
+    }
+    ?>
     <h2>Archery Scoring</h2>
 
     <form method="POST" action="submit.php">
@@ -65,6 +76,10 @@ include 'connect.php';
 </div>
 
 <script>
+    function closePopup() {
+        document.getElementById('score-popup').style.display = 'none';
+    }
+
     // AJAX function to fetch available rounds based on archer and equipment
     function fetchRounds() {
         const archerId = $('#archerId').val();

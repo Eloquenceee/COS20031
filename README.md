@@ -58,7 +58,7 @@ A web-based application for a recorder usecase of managing scoring per archery c
 
 ## Database Schema Requirements
 
-The system expects the following key tables:
+The following tables, with the outlined attributes should exist in order to get the application running:
 - `Archer` (archerId, firstName, lastName, gender, age)
 - `Equipment` (equipmentId, equipmentName)
 - `Competition` (competitionId, competitionName)

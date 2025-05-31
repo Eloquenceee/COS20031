@@ -69,9 +69,8 @@ $arrowsEntered = (int)$arrowRow['arrowCount'];
 $currentEndIndex = intdiv($arrowsEntered, ARROWS_PER_END);
 
 if ($currentEndIndex >= $totalEnds) {
-    echo "<h2>Scoring Complete</h2>";
-    echo "<p>All $totalEnds ends have been entered. Total score: <strong>$totalScore</strong>.</p>";
-    session_destroy();
+    $_SESSION['score_message'] = "Scoring Complete: All $totalEnds ends have been entered. Total score: $totalScore";
+    header("Location: index.php");
     exit;
 }
 
@@ -126,10 +125,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['arrow'])) {
 <div id="score-form">
     <h2 class="score-header">Scoring End <?= $currentEndIndex + 1 ?> / <?= $totalEnds ?></h2>
     <div class="score-header">
-        Distance: <?= $distance ?>m | Target: <?= $face ?>cm
+        Distance: <?= $distance ?>m Target: <?= $face ?>
     </div>
-    
-    <div class="score-header">Tap numpad to enter scores</div>
 
 <form method="POST" action="submit.php" id="arrow-form">
     <div class="score-header">Tap numpad to enter scores</div>
