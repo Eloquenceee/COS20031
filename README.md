@@ -16,24 +16,23 @@ A web-based application for a recorder usecase of managing scoring per archery c
 
 ## Technical Stack
 
-- PHP 7+ for backend logic
-- MySQL/MariaDB for database
-- jQuery for AJAX functionality
-- HTML5/CSS3 for frontend
-- Responsive design with media queries
+- PHP used for the majority of the code
+- MySQL/MariaDB for access to database
+- jQuery used for AJAX implementation
+- HTML/CSS for displaying frontend
 
 ## File Structure
 
-- `index.php` - Main entry point and archer/equipment selection
-- `submit.php` - Score submission and tracking interface
-- `fetch_rounds.php` - Dynamic round selection handler
-- `connect.php` - Database connection configuration
-- `style.css` - Styling and responsive design
+- `index.php` - Main page for the UI, 
+- `submit.php` - Score entering for selected archer
+- `fetch_rounds.php` - makes 
+- `connect.php` - Connects tot he 
+- `style.css` - Styling
 
 ## Setup
 
-1. Configure database connection in `connect.php`
-2. Import required database schema with tables:
+1. Correctly configure database connection in `connect.php`
+2. Make sure the following tables exist in the database with the entitities as defined below:
    - Archer
    - Equipment
    - Competition
@@ -56,7 +55,7 @@ A web-based application for a recorder usecase of managing scoring per archery c
 7. Submit scores for each end
 8. Progress through all ends until round completion
 
-## Database Schema Requirements
+## Database Table & Entity Requirements
 
 The following tables, with the outlined attributes should exist in order to get the application running:
 - `Archer` (archerId, firstName, lastName, gender, age)

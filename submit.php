@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['archerId'], $_POST['r
 $archerId = $_SESSION['archerId'] ?? null;
 $roundNo = $_SESSION['roundNo'] ?? null;
 $competitionId = $_SESSION['competitionId'] ?? null;
-$recorderId = 1; // Hardcoded for now, or get from login/session
+$recorderId = 1; // Can be changed in future for expanding functionality of UI
 
 if (!$archerId || !$roundNo || !$competitionId) {
     die("Missing required parameters.");
@@ -98,6 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['arrow'])) {
         $total += $scoreValue;
 
         $arrowNo = $i + 1;
+        // Insert ScoreArrow record
         mysqli_query($conn, "
             INSERT INTO ScoreArrow (scoreId, rangeId, arrowNo, scoreNo)
             VALUES ($scoreId, $rangeId, $arrowNo, '$arrowScore')
