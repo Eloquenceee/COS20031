@@ -32,7 +32,7 @@ A web-based application for a recorder usecase of managing scoring per archery c
 ## Setup
 
 1. Correctly configure database connection in `connect.php`
-2. Make sure the following tables exist in the database with the entitities as defined below:
+2. Make sure the following tables exist in the database with the attributes as defined below:
    - Archer
    - Equipment
    - Competition
@@ -55,7 +55,7 @@ A web-based application for a recorder usecase of managing scoring per archery c
 7. Submit scores for each end
 8. Progress through all ends until round completion
 
-## Database Table & Entity Requirements
+## Database Table & Attribute Requirements
 
 The following tables, with the outlined attributes should exist in order to get the application running:
 - `Archer` (archerId, firstName, lastName, gender, age)
