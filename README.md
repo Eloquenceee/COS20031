@@ -23,11 +23,11 @@ A web-based application for a recorder usecase of managing scoring per archery c
 
 ## File Structure
 
-- `index.php` - Main page for the UI, 
+- `index.php` - Main page for the UI
 - `submit.php` - Score entering for selected archer
-- `fetch_rounds.php` - makes 
-- `connect.php` - Connects tot he 
-- `style.css` - Styling
+- `fetch_rounds.php` - makes dynamic selection for round based on index.php entries
+- `connect.php` - Connects to MariaDB database
+- `style.css` - Styling for all files
 
 ## Setup
 
